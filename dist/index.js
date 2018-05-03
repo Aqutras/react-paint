@@ -185,14 +185,26 @@
               height: this.props.height
             }),
 
-            onMouseDown: this.mouseDown,
-            onTouchStart: this.mouseDown,
+            onMouseDown: function onMouseDown(e) {
+              return _this2.mouseDown(e);
+            },
+            onTouchStart: function onTouchStart(e) {
+              return _this2.mouseDown(e);
+            },
 
-            onMouseUp: this.mouseUp,
-            onTouchEnd: this.mouseUp,
+            onMouseUp: function onMouseUp(e) {
+              return _this2.mouseUp(e);
+            },
+            onTouchEnd: function onTouchEnd(e) {
+              return _this2.mouseUp(e);
+            },
 
-            onMouseMove: this.mouseMove,
-            onTouchMove: this.mouseMove
+            onMouseMove: function onMouseMove(e) {
+              return _this2.mouseMove(e);
+            },
+            onTouchMove: function onTouchMove(e) {
+              return _this2.mouseMove(e);
+            }
           })
         );
       }

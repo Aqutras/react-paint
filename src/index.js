@@ -113,14 +113,14 @@ export default class ReactPaint extends Component {
             })
           }
 
-          onMouseDown={this.mouseDown}
-          onTouchStart={this.mouseDown}
+          onMouseDown={(e) => this.mouseDown(e)}
+          onTouchStart={(e) => this.mouseDown(e)}
 
-          onMouseUp={this.mouseUp}
-          onTouchEnd={this.mouseUp}
+          onMouseUp={(e) => this.mouseUp(e)}
+          onTouchEnd={(e) => this.mouseUp(e)}
 
-          onMouseMove={this.mouseMove}
-          onTouchMove={this.mouseMove}
+          onMouseMove={(e) => this.mouseMove(e)}
+          onTouchMove={(e) => this.mouseMove(e)}
         />
       </div>
     );
