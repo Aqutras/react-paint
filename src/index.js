@@ -52,7 +52,7 @@ export default class ReactPaint extends Component {
     }
   }
 
-  mouseDown = e => {
+  mouseDown(e) {
     if (!this.state.mouseDown) this.setState({ mouseDown: true });
 
     this.setState({
@@ -65,9 +65,9 @@ export default class ReactPaint extends Component {
     );
   }
 
-  mouseUp = () => (this.setState({ mouseDown: false }));
+  mouseUp() {this.setState({ mouseDown: false })}
 
-  mouseMove = e => {
+  mouseMove(e) {
     if (this.state.mouseDown) {
       // prevent IOS scroll when drawing
       if (e.touches) e.preventDefault();
