@@ -95,7 +95,7 @@
           mouseLoc: [e.pageX || e.touches[0].pageX, e.pageY || e.touches[0].pageY]
         });
 
-        _this.context.moveTo((e.pageX || e.touches[0].pageX) - _this.bb.left, (e.pageY || e.touches[0].pageY) - _this.bb.top);
+        _this.canvas.getContext('2d').moveTo((e.pageX || e.touches[0].pageX) - _this.bb.left, (e.pageY || e.touches[0].pageY) - _this.bb.top);
       };
 
       _this.mouseUp = function () {
@@ -108,9 +108,9 @@
           if (e.touches) e.preventDefault();
 
           if ((e.pageX || e.touches[0].pageX) > 0 && (e.pageY || e.touches[0].pageY) < _this.props.height) {
-            _this.context.lineTo((e.pageX || e.touches[0].pageX) - _this.bb.left, (e.pageY || e.touches[0].pageY) - _this.bb.top);
+            _this.canvas.getContext('2d').lineTo((e.pageX || e.touches[0].pageX) - _this.bb.left, (e.pageY || e.touches[0].pageY) - _this.bb.top);
 
-            _this.context.stroke();
+            _this.canvas.getContext('2d').stroke();
           }
         }
       };
