@@ -88,33 +88,6 @@
 
       var _this = _possibleConstructorReturn(this, (_ref = ReactPaint.__proto__ || Object.getPrototypeOf(ReactPaint)).call.apply(_ref, [this].concat(props)));
 
-      _this.mouseDown = function (e) {
-        if (!_this.state.mouseDown) _this.setState({ mouseDown: true });
-
-        _this.setState({
-          mouseLoc: [e.pageX || e.touches[0].pageX, e.pageY || e.touches[0].pageY]
-        });
-
-        _this.canvas.getContext('2d').moveTo((e.pageX || e.touches[0].pageX) - _this.bb.left, (e.pageY || e.touches[0].pageY) - _this.bb.top);
-      };
-
-      _this.mouseUp = function () {
-        return _this.setState({ mouseDown: false });
-      };
-
-      _this.mouseMove = function (e) {
-        if (_this.state.mouseDown) {
-          // prevent IOS scroll when drawing
-          if (e.touches) e.preventDefault();
-
-          if ((e.pageX || e.touches[0].pageX) > 0 && (e.pageY || e.touches[0].pageY) < _this.props.height) {
-            _this.canvas.getContext('2d').lineTo((e.pageX || e.touches[0].pageX) - _this.bb.left, (e.pageY || e.touches[0].pageY) - _this.bb.top);
-
-            _this.canvas.getContext('2d').stroke();
-          }
-        }
-      };
-
       _this.state = {
         mouseDown: false,
         mouseLoc: [0, 0]
@@ -125,9 +98,9 @@
     _createClass(ReactPaint, [{
       key: 'componentDidMount',
       value: function componentDidMount() {
-        var _props = this.props;
-        var brushCol = _props.brushCol;
-        var lineWidth = _props.lineWidth;
+        var _props = this.props,
+            brushCol = _props.brushCol,
+            lineWidth = _props.lineWidth;
 
 
         this.context = this.canvas.getContext('2d');
@@ -140,9 +113,9 @@
     }, {
       key: 'componentWillUpdate',
       value: function componentWillUpdate(nextProps) {
-        var _props2 = this.props;
-        var brushCol = _props2.brushCol;
-        var lineWidth = _props2.lineWidth;
+        var _props2 = this.props,
+            brushCol = _props2.brushCol,
+            lineWidth = _props2.lineWidth;
 
 
         if (brushCol !== nextProps.brushCol || lineWidth !== nextProps.lineWidth) {
@@ -151,16 +124,46 @@
         }
       }
     }, {
+      key: 'mouseDown',
+      value: function mouseDown(e) {
+        if (!this.state.mouseDown) this.setState({ mouseDown: true });
+
+        this.setState({
+          mouseLoc: [e.pageX || e.touches[0].pageX, e.pageY || e.touches[0].pageY]
+        });
+
+        this.context.moveTo((e.pageX || e.touches[0].pageX) - this.bb.left, (e.pageY || e.touches[0].pageY) - this.bb.top);
+      }
+    }, {
+      key: 'mouseUp',
+      value: function mouseUp() {
+        this.setState({ mouseDown: false });
+      }
+    }, {
+      key: 'mouseMove',
+      value: function mouseMove(e) {
+        if (this.state.mouseDown) {
+          // prevent IOS scroll when drawing
+          if (e.touches) e.preventDefault();
+
+          if ((e.pageX || e.touches[0].pageX) > 0 && (e.pageY || e.touches[0].pageY) < this.props.height) {
+            this.context.lineTo((e.pageX || e.touches[0].pageX) - this.bb.left, (e.pageY || e.touches[0].pageY) - this.bb.top);
+
+            this.context.stroke();
+          }
+        }
+      }
+    }, {
       key: 'render',
       value: function render() {
         var _this2 = this;
 
-        var _props3 = this.props;
-        var width = _props3.width;
-        var height = _props3.height;
-        var onDraw = _props3.onDraw;
-        var style = _props3.style;
-        var className = _props3.className;
+        var _props3 = this.props,
+            width = _props3.width,
+            height = _props3.height,
+            onDraw = _props3.onDraw,
+            style = _props3.style,
+            className = _props3.className;
 
 
         return _react2.default.createElement(
