@@ -30,8 +30,6 @@ export default class ReactPaint extends Component {
   }
 
   componentDidMount() {
-    const { brushCol, lineWidth } = this.props;
-
     this.bb = this.canvas.getBoundingClientRect();
   }
 
@@ -48,6 +46,8 @@ export default class ReactPaint extends Component {
   }
 
   setContext() {
+    const { brushCol, lineWidth } = this.props;
+
     this.context = this.canvas.getContext('2d');
     this.context.lineWidth = lineWidth;
     this.context.strokeStyle = brushCol;

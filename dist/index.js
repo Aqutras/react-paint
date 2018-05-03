@@ -98,19 +98,14 @@
     _createClass(ReactPaint, [{
       key: 'componentDidMount',
       value: function componentDidMount() {
-        var _props = this.props,
-            brushCol = _props.brushCol,
-            lineWidth = _props.lineWidth;
-
-
         this.bb = this.canvas.getBoundingClientRect();
       }
     }, {
       key: 'componentWillUpdate',
       value: function componentWillUpdate(nextProps) {
-        var _props2 = this.props,
-            brushCol = _props2.brushCol,
-            lineWidth = _props2.lineWidth;
+        var _props = this.props,
+            brushCol = _props.brushCol,
+            lineWidth = _props.lineWidth;
 
 
         if (brushCol !== nextProps.brushCol || lineWidth !== nextProps.lineWidth) {
@@ -121,6 +116,11 @@
     }, {
       key: 'setContext',
       value: function setContext() {
+        var _props2 = this.props,
+            brushCol = _props2.brushCol,
+            lineWidth = _props2.lineWidth;
+
+
         this.context = this.canvas.getContext('2d');
         this.context.lineWidth = lineWidth;
         this.context.strokeStyle = brushCol;
